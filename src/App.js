@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Radium from "radium";
 import Emtehan from "./hamintori/Emtehani.js";
 
 class App extends React.Component {
@@ -40,8 +41,17 @@ class App extends React.Component {
 
   render() {
     const style = {
+      backgroundColor: "green",
+      color: "white",
       border: "1px solid black",
+      padding: "8px",
+      margin: "20px",
       borderRadius: "10px",
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "yellow",
+        color: "black",
+      },
     };
     let persons = null;
     if (this.state.showPerson) {
@@ -60,10 +70,26 @@ class App extends React.Component {
           })}
         </div>
       );
+      style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "pink",
+        color: "black",
+      };
     }
+    let classess = [];
+    if (this.state.persons.length <= 2) {
+      classess.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classess.push("bold");
+    }
+
     return (
       <div className="App">
         <h1>Heloo</h1>
+        <p className={classess.join(" ")}>
+          It is working by dynamic react styling
+        </p>
         <button style={style} onClick={this.toggelHandler}>
           switch me
         </button>
@@ -72,5 +98,49 @@ class App extends React.Component {
     );
   }
 }
+export default Radium(App);
 
-export default App;
+// import Validation from "./hamintori/ValidationC";
+// import Char from "./hamintori/CharC";
+
+// class App extends React.Component {
+//   state = {
+//     userInput: "",
+//   };
+//   changeHandler = (event) => {
+//     this.setState({ userInput: event.target.value });
+//   };
+//   deleteCharHandler = (index) => {
+//     const char = this.state.userInput.split("");
+//     char.splice(index, 1);
+//     const joinChar = char.join("");
+//     this.setState({ userInput: joinChar });
+//   };
+
+//   render() {
+//     const charList = this.state.userInput.split("").map((ch, index) => {
+//       return (
+//         <Char
+//           character={ch}
+//           key={index}
+//           click={() => {
+//             this.deleteCharHandler(index);
+//           }}
+//         />
+//       );
+//     });
+//     return (
+//       <div>
+//         <input
+//           type="text"
+//           onChange={this.changeHandler}
+//           value={this.state.userInput}
+//         />
+//         <p>{this.state.userInput}</p>
+//         <Validation inputlength={this.state.userInput.length} />
+//         {charList}
+//       </div>
+//     );
+//   }
+// }
+// export default App;

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Person.css";
+import Radium from "radium";
 
 const Emtehan = (props) => {
   return (
@@ -11,7 +12,7 @@ const Emtehan = (props) => {
     </div>
   );
 };
-export default Emtehan;
+export default Radium(Emtehan);
 
 // //       *******
 //        REACT HOOKS
