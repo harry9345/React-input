@@ -7,7 +7,7 @@ const Emtehan = (props) => {
       <p onClick={props.click}>
         i am {props.name} and i am {props.age}
       </p>
-      <input type="text" onChange={props.change} />
+      <input type="text" onChange={props.change} value={props.name} />
     </div>
   );
 };

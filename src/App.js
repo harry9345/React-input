@@ -1,78 +1,73 @@
 import React from "react";
 import "./App.css";
 import Emtehan from "./hamintori/Emtehani.js";
-import UserInput from "./components/UserInput";
-import Button from "react-bootstrap/Button";
 
 class App extends React.Component {
   state = {
-    person: [
-      { name: "ali", age: 33 },
-      { name: "mo", age: 2 },
-      { name: "so", age: 30 },
+    persons: [
+      { id: "jkbf", name: "ali", age: 33 },
+      { id: "ldfkjv", name: "mo", age: 2 },
+      { id: ";e", name: "so", age: 30 },
     ],
     otherState: "hala harchi ",
+    username: "super harry",
+    showPerson: false,
+  };
+  nameChangeHandlre = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+    const person = {
+      ...this.state.persons[personIndex],
+    };
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
+  };
+  toggelHandler = () => {
+    const doesShow = this.state.showPerson;
+    this.setState({ showPerson: !doesShow });
   };
 
-  switchNameHandler = () => {
-    // console.log("its working");
-    this.setState({
-      person: [
-        { name: "has", age: 323 },
-        { name: "mo", age: 2 },
-        { name: "so", age: 0 },
-      ],
-    });
-  };
-  switchHandler = () => {
-    // console.log("its working");
-    this.setState({
-      person: [
-        { name: "mmmmmmmmmm", age: 323 },
-        { name: "ssssssmo", age: 2 },
-        { name: "ssssssssso", age: 0 },
-      ],
-    });
-  };
-  nameChangeHandlre = (event) => {
-    this.setState({
-      person: [
-        { name: "mmmmmmmmmm", age: 323 },
-        { name: event.target.value, age: 2 },
-        { name: "ssssssssso", age: 0 },
-      ],
-    });
+  deletePersonHandler = (personIndex) => {
+    // const persons = this.state.persons.slice(); or =>
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
   };
 
   render() {
     const style = {
-      backgroundColor: "#c8922b",
-      border: "2px solid #c8922b",
-      borderRadius: "1000px",
-      padding: "3px",
-      cursor: "pointer",
+      border: "1px solid black",
+      borderRadius: "10px",
     };
+    let persons = null;
+    if (this.state.showPerson) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return (
+              <Emtehan
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                key={person.id}
+                change={(event) => this.nameChangeHandlre(event, person.id)}
+              />
+            );
+          })}
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>Heloo</h1>
-        <Button onClick={this.switchNameHandler} style={style}>
+        <button style={style} onClick={this.toggelHandler}>
           switch me
-        </Button>
-        <Emtehan
-          name={this.state.person[0].name}
-          age={this.state.person[0].age}
-        />
-        <Emtehan
-          name={this.state.person[1].name}
-          age={this.state.person[1].age}
-          click={this.switchHandler}
-          change={this.nameChangeHandlre}
-        />
-        <Emtehan
-          name={this.state.person[2].name}
-          age={this.state.person[2].age}
-        />
-        <UserInput />
+        </button>
+        {persons}
       </div>
     );
   }
