@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 
 import "./App.css";
+<<<<<<< master:src/containers/App.js
 import Persons from "../components/persons/Persons";
 
 import Cockpit from "../components/Cockpit/Cockpit";
+=======
+import Radium from "radium";
+import Emtehan from "./hamintori/Emtehani.js";
+>>>>>>> done:src/App.js
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +57,22 @@ class App extends Component {
   };
 
   render() {
+<<<<<<< master:src/containers/App.js
+=======
+    const style = {
+      backgroundColor: "green",
+      color: "white",
+      border: "1px solid black",
+      padding: "8px",
+      margin: "20px",
+      borderRadius: "10px",
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "yellow",
+        color: "black",
+      },
+    };
+>>>>>>> done:src/App.js
     let persons = null;
     if (this.state.showPerson) {
       persons = (
@@ -61,7 +82,13 @@ class App extends Component {
           changed={this.nameChangeHandlre}
         />
       );
+      style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "pink",
+        color: "black",
+      };
     }
+<<<<<<< master:src/containers/App.js
 
     return (
       <div className="App">
@@ -70,12 +97,35 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.toggelHandler}
         />
+=======
+    let classess = [];
+    if (this.state.persons.length <= 2) {
+      classess.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classess.push("bold");
+    }
+
+    return (
+      <div className="App">
+        <h1>Heloo</h1>
+        <p className={classess.join(" ")}>
+          It is working by dynamic react styling
+        </p>
+        <button style={style} onClick={this.toggelHandler}>
+          switch me
+        </button>
+>>>>>>> done:src/App.js
         {persons}
       </div>
     );
   }
 }
+<<<<<<< master:src/containers/App.js
 export default App;
+=======
+export default Radium(App);
+>>>>>>> done:src/App.js
 
 // import Validation from "./hamintori/ValidationC";
 // import Char from "./hamintori/CharC";

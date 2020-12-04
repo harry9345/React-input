@@ -1,3 +1,4 @@
+<<<<<<< master:src/components/persons/person/Person.js
 import React, { Component } from "react";
 
 import classes from "./Person.module.css";
@@ -20,6 +21,23 @@ class Person extends Component {
   }
 }
 export default Person;
+=======
+import React from "react";
+import "./Person.css";
+import Radium from "radium";
+
+const Emtehan = (props) => {
+  return (
+    <div className="Person">
+      <p onClick={props.click}>
+        i am {props.name} and i am {props.age}
+      </p>
+      <input type="text" onChange={props.change} value={props.name} />
+    </div>
+  );
+};
+export default Radium(Emtehan);
+>>>>>>> done:src/hamintori/Emtehani.js
 
 // //       *******
 //        REACT HOOKS
