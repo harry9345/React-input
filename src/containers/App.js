@@ -1,9 +1,24 @@
 import React from "react";
+import Styled from "styled-components";
 import "./App.css";
-import Radium from "radium";
-import Emtehan from "./hamintori/Emtehani.js";
+import Person from "../components/persons/Persons";
+import { Component } from "react";
 
-class App extends React.Component {
+const StyledButton = Styled.button`
+background-color: ${(props) => (props.alt ? "red" : "green")};
+color: white;
+border: 1px solid black;
+padding: 8px;
+margin: 20px;
+border-radius: 10px;
+cursor: pointer;
+&:hover {
+  background-color: ${(props) => (props.alt ? "pink" : "yellow")};
+  color: black;
+},
+`;
+
+class App extends Component {
   state = {
     persons: [
       { id: "jkbf", name: "ali", age: 33 },
@@ -59,7 +74,7 @@ class App extends React.Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Emtehan
+              <Person
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
@@ -90,15 +105,15 @@ class App extends React.Component {
         <p className={classess.join(" ")}>
           It is working by dynamic react styling
         </p>
-        <button style={style} onClick={this.toggelHandler}>
+        <StyledButton alt={this.state.showPerson} onClick={this.toggelHandler}>
           switch me
-        </button>
+        </StyledButton>
         {persons}
       </div>
     );
   }
 }
-export default Radium(App);
+export default App;
 
 // import Validation from "./hamintori/ValidationC";
 // import Char from "./hamintori/CharC";
