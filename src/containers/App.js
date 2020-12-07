@@ -1,22 +1,9 @@
-import React from "react";
-import Styled from "styled-components";
-import "./App.css";
-import Person from "../components/persons/Persons";
-import { Component } from "react";
+import React, { Component } from "react";
 
-const StyledButton = Styled.button`
-background-color: ${(props) => (props.alt ? "red" : "green")};
-color: white;
-border: 1px solid black;
-padding: 8px;
-margin: 20px;
-border-radius: 10px;
-cursor: pointer;
-&:hover {
-  background-color: ${(props) => (props.alt ? "pink" : "yellow")};
-  color: black;
-},
-`;
+import "./App.css";
+import Persons from "../components/persons/Persons";
+
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -55,59 +42,24 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      border: "1px solid black",
-      padding: "8px",
-      margin: "20px",
-      borderRadius: "10px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "yellow",
-        color: "black",
-      },
-    };
     let persons = null;
     if (this.state.showPerson) {
       persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                click={() => this.deletePersonHandler(index)}
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                change={(event) => this.nameChangeHandlre(event, person.id)}
-              />
-            );
-          })}
-        </div>
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandlre}
+        />
       );
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "pink",
-        color: "black",
-      };
-    }
-    let classess = [];
-    if (this.state.persons.length <= 2) {
-      classess.push("red");
-    }
-    if (this.state.persons.length <= 1) {
-      classess.push("bold");
     }
 
     return (
       <div className="App">
-        <h1>Heloo</h1>
-        <p className={classess.join(" ")}>
-          It is working by dynamic react styling
-        </p>
-        <StyledButton alt={this.state.showPerson} onClick={this.toggelHandler}>
-          switch me
-        </StyledButton>
+        <Cockpit
+          showPerson={this.state.showPerson}
+          persons={this.state.persons}
+          clicked={this.toggelHandler}
+        />
         {persons}
       </div>
     );

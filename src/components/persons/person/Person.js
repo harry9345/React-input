@@ -1,23 +1,8 @@
 import React from "react";
-import Styled from "styled-components";
 
-import "./Person.css";
+import classes from "./Person.module.css";
 
-const StyledDiv = Styled.div`
-padding: 16px;
-border: 1px solid black;
-text-align: center;
-box-shadow: 0 2px 2px 1px black;
-width: 60%;
-margin: 15px;
-align-items: center;
-
-@media(min-width:500px) {
-  width: "450px"
-}
-`;
-
-const Emtehan = (props) => {
+const Person = (props) => {
   // const style = {
   //   "@media(min-width:500px)": {
   //     width: "450px",
@@ -25,15 +10,15 @@ const Emtehan = (props) => {
   // };
   return (
     // <div className="Person" style={style}>
-    <StyledDiv>
+    <div className={classes.Person}>
       <p onClick={props.click}>
         i am {props.name} and i am {props.age}
       </p>
       <input type="text" onChange={props.change} value={props.name} />
-    </StyledDiv>
+    </div>
   );
 };
-export default Emtehan;
+export default Person;
 
 // //       *******
 //        REACT HOOKS
