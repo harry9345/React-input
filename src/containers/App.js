@@ -6,6 +6,10 @@ import Persons from "../components/persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("app.js contractor");
+  }
   state = {
     persons: [
       { id: "jkbf", name: "ali", age: 33 },
@@ -16,6 +20,12 @@ class App extends Component {
     username: "super harry",
     showPerson: false,
   };
+
+  static getDrivedStateFromProps(props, state) {
+    console.log("getDrivefromstate", props);
+    return state;
+  }
+
   nameChangeHandlre = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;

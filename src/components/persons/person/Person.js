@@ -1,23 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 
 import classes from "./Person.module.css";
 
-const Person = (props) => {
-  // const style = {
-  //   "@media(min-width:500px)": {
-  //     width: "450px",
-  //   },
-  // };
-  return (
-    // <div className="Person" style={style}>
-    <div className={classes.Person}>
-      <p onClick={props.click}>
-        i am {props.name} and i am {props.age}
-      </p>
-      <input type="text" onChange={props.change} value={props.name} />
-    </div>
-  );
-};
+class Person extends Component {
+  render() {
+    return (
+      // <div className="Person" style={style}>
+      <div className={classes.Person}>
+        <p onClick={this.props.click}>
+          i am {this.props.name} and i am {this.props.age}
+        </p>
+        <input
+          type="text"
+          onChange={this.props.change}
+          value={this.props.name}
+        />
+      </div>
+    );
+  }
+}
 export default Person;
 
 // //       *******

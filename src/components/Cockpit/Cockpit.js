@@ -2,11 +2,14 @@ import React from "react";
 
 import classes from "./Cockpit.module.css";
 
-const Cockpit = (props) => {
-  let btnClass = [""];
-  btnClass = classes.red;
-
+const cockpit = (props) => {
   let assClassess = [];
+  let btnClass = "";
+
+  if (props.showPerson) {
+    btnClass = classes.Red;
+  }
+
   if (props.persons.length <= 2) {
     assClassess.push(classes.red);
   }
@@ -26,4 +29,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+export default cockpit;
