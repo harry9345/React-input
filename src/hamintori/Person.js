@@ -2,7 +2,7 @@ import React from "react";
 import "./Person.css";
 import Radium from "radium";
 
-const Emtehan = (props) => {
+const Person = (props) => {
   return (
     <div className="Person">
       <p onClick={props.click}>
@@ -12,7 +12,7 @@ const Emtehan = (props) => {
     </div>
   );
 };
-export default Radium(Emtehan);
+export default Radium(Person);
 
 // //       *******
 //        REACT HOOKS

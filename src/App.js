@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Radium from "radium";
-import Emtehan from "./hamintori/Emtehani.js";
+import Person from "./hamintori/Person.js";
 
 class App extends React.Component {
   state = {
@@ -9,6 +9,8 @@ class App extends React.Component {
       { id: "jkbf", name: "ali", age: 33 },
       { id: "ldfkjv", name: "mo", age: 2 },
       { id: ";e", name: "so", age: 30 },
+      { id: "fd", name: "stgg", age: 23 },
+      { id: "vfda", name: "asdferg", age: 305 },
     ],
     otherState: "hala harchi ",
     username: "super harry",
@@ -34,6 +36,7 @@ class App extends React.Component {
 
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice(); or =>
+
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
@@ -59,7 +62,7 @@ class App extends React.Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Emtehan
+              <Person
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
