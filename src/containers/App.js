@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< master:src/containers/App.js
 
 import classes from "./App.module.css";
 import Persons from "../components/Pesrons/Persons";
@@ -37,6 +38,25 @@ class App extends React.Component {
     console.log("app.js componentdid moun");
   }
 
+=======
+import "./App.css";
+import Radium from "radium";
+import Person from "./hamintori/Person.js";
+
+class App extends React.Component {
+  state = {
+    persons: [
+      { id: "jkbf", name: "ali", age: 33 },
+      { id: "ldfkjv", name: "mo", age: 2 },
+      { id: ";e", name: "so", age: 30 },
+      { id: "fd", name: "stgg", age: 23 },
+      { id: "vfda", name: "asdferg", age: 305 },
+    ],
+    otherState: "hala harchi ",
+    username: "super harry",
+    showPerson: false,
+  };
+>>>>>>> css modual:src/App.js
   nameChangeHandlre = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
@@ -69,11 +89,27 @@ class App extends React.Component {
 
     if (this.state.showPerson) {
       persons = (
+<<<<<<< master:src/containers/App.js
         <Persons
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangeHandlre}
         />
+=======
+        <div>
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                key={person.id}
+                change={(event) => this.nameChangeHandlre(event, person.id)}
+              />
+            );
+          })}
+        </div>
+>>>>>>> css modual:src/App.js
       );
     }
 
