@@ -1,18 +1,25 @@
-import React from "react";
-import "./Person.css";
-import Radium from "radium";
+import React, { Component } from "react";
+import classes from "./Person.module.css";
 
-const Person = (props) => {
-  return (
-    <div className="Person">
-      <p onClick={props.click}>
-        i am {props.name} and i am {props.age}
-      </p>
-      <input type="text" onChange={props.change} value={props.name} />
-    </div>
-  );
-};
-export default Radium(Person);
+// const Person = (props) => {
+class Person extends Component {
+  render() {
+    console.log("person render");
+    return (
+      <div className={classes.Person}>
+        <p onClick={this.props.click}>
+          i am {this.props.name} and i am {this.props.age}
+        </p>
+        <input
+          type="text"
+          onChange={this.props.change}
+          value={this.props.name}
+        />
+      </div>
+    );
+  }
+}
+export default Person;
 
 // //       *******
 //        REACT HOOKS
